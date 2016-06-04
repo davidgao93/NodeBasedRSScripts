@@ -21,13 +21,13 @@ public class Walk implements Node {
 	
 	@Override
 	public boolean validate() {
-		return data.BankArea.contains(me) && !s.getInventory().isFull();
+		return s.objects.closest("Portal") == null && !s.getInventory().isFull() && !data.LogArea.contains(me);
 	}
 
 	@Override
 	public void run() throws InterruptedException {
 		//s.log("WALK OPERATION");
-		s.getWalking().walk(data.SwampArea);
+		s.getWalking().webWalk(data.LogArea);
 		new ConditionalSleep(500, 1500) {
 			@Override
 			public boolean condition() {

@@ -42,8 +42,10 @@ public class Bloom implements Node {
 			} else {
 				data.CurrentLog = data.BetaLog;
 			}
-			data.CurrentLog.interact(s.getBot(), "Walk here");
-			Script.sleep(Script.random(1000, 1500));
+			if (!me.getPosition().equals(data.CurrentLog)) {
+				data.CurrentLog.interact(s.getBot(), "Walk here");
+				Script.sleep(Script.random(1000, 1500));
+			}
 	      	s.getTabs().open(Tab.INVENTORY);
 	     	inv.getItem(2963).interact("Cast Bloom");
 	     	Script.sleep(Script.random(2000, 2500));

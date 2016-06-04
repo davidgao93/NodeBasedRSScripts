@@ -28,6 +28,8 @@ public class GreenThumbs extends Script {
 		while (gui.running) {
 			sleep(10);
 		}
+		log("Starting on world + " + worlds.getCurrentWorld());
+		data.setCurrentWorld(worlds.getCurrentWorld());
 	}
 	
 	@Override
@@ -40,16 +42,13 @@ public class GreenThumbs extends Script {
 		Node[] tasks = {
 				new Bank(this, data), 
 				new Stamina(this, data),
+				new Eat(this, data),
 				new Walk(this, data),
-				new Gate(this, data),
-				new OpenGate(this, data),
 				new WorldHop(this, data),
-				new Logs(this, data),
 				new Bloom(this, data), 
 				new Pick(this, data),
 				new Home(this, data),
 				new Recharge(this, data),
-				new Lost(this, data)
 				};
 		return tasks;
 	}

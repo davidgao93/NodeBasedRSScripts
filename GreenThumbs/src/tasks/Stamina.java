@@ -1,6 +1,7 @@
 package tasks;
 
 import org.osbot.rs07.script.Script;
+import org.osbot.rs07.utility.ConditionalSleep;
 import org.osbot.rs07.api.Inventory;
 import org.osbot.rs07.api.model.Player;
 import org.osbot.rs07.api.model.RS2Object;
@@ -36,12 +37,28 @@ public class Stamina implements Node {
 	  		if (s.getBank().isOpen()) {
 	  			s.getBank().withdraw(STAMINA_ID, 1);
 	  			s.getBank().close();
-	  	  		s.getInventory().interact("Drink", STAMINA_ID);
-	  	  		Script.sleep(Script.random(1200, 1500));
-	  			inv.getItem(DSTAMINA_ID).interact("Drop");
+	  	        new ConditionalSleep(1000, 100) {
+	  	            @Override
+	  	            public boolean condition() throws InterruptedException {
+	  	                return !s.getBank().isOpen();
+	  	            }
+	  	        }.sleep();
+	  			
+	  			if (s.getInventory().contains(STAMINA_ID)) {
+	  				s.getInventory().interact("Drink", STAMINA_ID);
+	  				Script.sleep(Script.random(1200, 1500));
+	  			}
+	  			if (s.getInventory().contains(DSTAMINA_ID)) {
+	  				inv.getItem(DSTAMINA_ID).interact("Drop");
+	  			}
 	  		} else {
 	  			bankBooth.interact("Bank");
-	  			Script.sleep(Script.random(3500, 4500));
+	  	        new ConditionalSleep(1000, 100) {
+	  	            @Override
+	  	            public boolean condition() throws InterruptedException {
+	  	                return s.getBank().isOpen();
+	  	            }
+	  	        }.sleep();
   			}
 		}
 	}

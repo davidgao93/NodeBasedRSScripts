@@ -1,6 +1,7 @@
 package tasks;
 
 import org.osbot.rs07.script.Script;
+import org.osbot.rs07.utility.ConditionalSleep;
 import org.osbot.rs07.api.Inventory;
 import org.osbot.rs07.api.model.Player;
 import org.osbot.rs07.api.model.RS2Object;
@@ -30,7 +31,12 @@ public class Pick implements Node {
 		while(s.objects.closest("Fungi on log") != null && !inv.isFull()) {
 			RS2Object fungiObject = s.objects.closest("Fungi on log");
 			fungiObject.interact("Pick");
-			Script.sleep(Script.random(1200, 1500));
+			new ConditionalSleep(500, 100) {
+				@Override
+				public boolean condition() {
+					return !me.isMoving();
+				}
+			}.sleep();
 		}
 	}
 	

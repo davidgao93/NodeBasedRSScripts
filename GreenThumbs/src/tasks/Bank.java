@@ -26,34 +26,39 @@ public class Bank implements Node {
 	
 	@Override
 	public boolean validate() {
-		return (data.BarArea.contains(me) || data.BankArea.contains(me)) && inv.isFull();
+		return s.objects.closest("Portal") == null && inv.isFull();
 	}
 
 	@Override
 	public void run() throws InterruptedException {
 		//s.log("BANK OPERATION");
-		RS2Object door = s.objects.closest(24369);
-        if (door != null) {
-			door.interact("Open");
-        }
-        s.getWalking().walk(data.BankArea);
-		new ConditionalSleep(500, 1500) {
+        s.getWalking().webWalk(data.BankArea);
+		new ConditionalSleep(1000, 500) {
 			@Override
 			public boolean condition() {
 				return !me.isMoving();
 			}
 		}.sleep();
 		RS2Object bankBooth = s.objects.closest("Bank booth");
-    	s.getWalking().walk(bankBooth.getPosition());
     	if (bankBooth != null) {
 			if (s.getBank().isOpen()) {
 		      	s.getInventory().getItem(2970).interact("Deposit-All");
-		      	Script.sleep(Script.random(1500, 2500));
+                new ConditionalSleep(1000, 100) {
+                    @Override
+                    public boolean condition() throws InterruptedException {
+                        return !s.getInventory().isFull();
+                    }
+                }.sleep();
 		      	data.mushroomCounter += 25;
 			} else {
 				bankBooth.interact("Bank");
-				Script.sleep(Script.random(3500, 4500));
-			}
+                new ConditionalSleep(1000, 100) {
+                    @Override
+                    public boolean condition() throws InterruptedException {
+                        return s.getBank().isOpen();
+                    }
+                }.sleep();
+            }
     	}
 	}
 }

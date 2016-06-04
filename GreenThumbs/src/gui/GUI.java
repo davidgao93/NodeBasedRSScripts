@@ -44,7 +44,7 @@ public class GUI extends JFrame {
 				dispose();
 			}
 		});
-		btnStartScript.setBounds(10, 100, 210, 25);
+		btnStartScript.setBounds(35, 80, 150, 25);
 		contentPane.add(btnStartScript);
 		
 		staminaUsageBox = new JCheckBox();
@@ -53,13 +53,13 @@ public class GUI extends JFrame {
 		contentPane.add(staminaUsageBox);
 		
 		txtFoodName = new JTextField();
-		txtFoodName.setText("Food name");
+		txtFoodName.setText("Lobster");
 		txtFoodName.setColumns(10);
 		txtFoodName.setBounds(120, 10, 100, 20);
 		contentPane.add(txtFoodName);
 		
 		healthBox = new JTextField();
-		healthBox.setText("HP to Eat at");
+		healthBox.setText("60");
 		healthBox.setColumns(2);
 		healthBox.setBounds(120, 40, 100, 20);
 		contentPane.add(healthBox);

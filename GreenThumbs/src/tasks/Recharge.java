@@ -31,14 +31,14 @@ public class Recharge implements Node {
 		        	kharyrllPortal.interact("Enter");
 		        	Script.sleep(Script.random(2000, 2500));
 		        } else {
-		        	s.getWalking().walk(kharyrllPortal);
+		        	s.getWalking().walk(kharyrllPortal.getPosition());
 		        }
 			} else {
 		      	if(altar.isVisible()) {
 		      		altar.interact("Pray");
 		      		Script.sleep(Script.random(4000, 4500));
 		      	} else {
-		      		s.getWalking().walk(altar);
+		      		s.getWalking().walk(altar.getPosition());
 		      	}
 			}
       	}
