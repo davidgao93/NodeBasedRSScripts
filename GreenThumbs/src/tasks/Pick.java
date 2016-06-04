@@ -30,13 +30,15 @@ public class Pick implements Node {
 		//s.log("PICK OPERATION");
 		while(s.objects.closest("Fungi on log") != null && !inv.isFull()) {
 			RS2Object fungiObject = s.objects.closest("Fungi on log");
-			fungiObject.interact("Pick");
-			new ConditionalSleep(500, 100) {
-				@Override
-				public boolean condition() {
-					return !me.isMoving();
-				}
-			}.sleep();
+			if (fungiObject != null) {
+				fungiObject.interact("Pick");
+				new ConditionalSleep(500, 100) {
+					@Override
+					public boolean condition() {
+						return !me.isMoving();
+					}
+				}.sleep();
+			}
 		}
 	}
 	
