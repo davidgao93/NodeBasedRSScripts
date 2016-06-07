@@ -33,7 +33,7 @@ public class Eat implements Node {
 
 	@Override
 	public void run() throws InterruptedException {
-		//s.log("EAT OPERATION");
+		s.log("EAT OPERATION");
 		RS2Object bankBooth = s.objects.closest("Bank booth");
 		if (bankBooth != null) {
 	  		if (s.getBank().isOpen()) {

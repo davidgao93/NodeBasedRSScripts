@@ -50,6 +50,7 @@ public class GUI extends JFrame {
 		staminaUsageBox = new JCheckBox();
 		staminaUsageBox.setText("Stamina Pots");
 		staminaUsageBox.setBounds(10, 10, 100, 20);
+		staminaUsageBox.setSelected(true);
 		contentPane.add(staminaUsageBox);
 		
 		txtFoodName = new JTextField();

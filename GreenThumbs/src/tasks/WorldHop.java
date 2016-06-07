@@ -47,7 +47,7 @@ public class WorldHop implements Node {
 
 	@Override
 	public void run() throws InterruptedException {
-		//s.log("WORLDHOP OPERATION");
+		s.log("WORLDHOP OPERATION");
 		if (!data.SafeArea.contains(me)) {
 			s.log("Getting to safe area to World Hop");
 			s.getWalking().webWalk(data.SafeArea);
@@ -66,12 +66,7 @@ public class WorldHop implements Node {
 				if (s.worlds != null) {
 					s.worlds.hop(hopToWorld);
 				}
-				new ConditionalSleep(2000, 500) {
-					@Override
-					public boolean condition() {
-						return me.isOnScreen();
-					}
-				}.sleep();
+				Script.sleep(Script.random(3200, 3500));
         	}
         	
         	if (s.worlds.getCurrentWorld() != data.getCurrentWorld()) {

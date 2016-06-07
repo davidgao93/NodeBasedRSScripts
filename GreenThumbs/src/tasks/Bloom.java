@@ -30,7 +30,7 @@ public class Bloom implements Node {
 
 	@Override
 	public void run() throws InterruptedException {
-		//s.log("BLOOM OPERATION");
+		s.log("BLOOM OPERATION");
 		if (inv.contains(2972)) {
 			inv.drop(2972);
 		}

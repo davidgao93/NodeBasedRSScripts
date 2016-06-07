@@ -20,7 +20,7 @@ public class Recharge implements Node {
 
 	@Override
 	public void run() throws InterruptedException {
-		//s.log("RECHARGE OPERATION");
+		s.log("RECHARGE OPERATION");
 		RS2Object portal = s.objects.closest("Portal");
       	RS2Object kharyrllPortal = s.objects.closest("Kharyrll Portal");
       	RS2Object altar = s.objects.closest("Altar");
@@ -31,14 +31,14 @@ public class Recharge implements Node {
 		        	kharyrllPortal.interact("Enter");
 		        	Script.sleep(Script.random(2000, 2500));
 		        } else {
-		        	s.getWalking().walk(kharyrllPortal.getPosition());
+		        	s.getWalking().walk(kharyrllPortal);
 		        }
 			} else {
 		      	if(altar.isVisible()) {
 		      		altar.interact("Pray");
 		      		Script.sleep(Script.random(4000, 4500));
 		      	} else {
-		      		s.getWalking().walk(altar.getPosition());
+		      		s.getWalking().walk(altar);
 		      	}
 			}
       	}

@@ -1,6 +1,5 @@
 package tasks;
 import org.osbot.rs07.script.Script;
-import org.osbot.rs07.utility.ConditionalSleep;
 import org.osbot.rs07.api.Inventory;
 import org.osbot.rs07.api.model.Player;
 
@@ -29,13 +28,8 @@ public class Home implements Node {
 
 	@Override
 	public void run() throws InterruptedException {
-		//s.log("HOME OPERATION");
+		s.log("HOME OPERATION");
       	s.magic.castSpell(Spells.NormalSpells.HOUSE_TELEPORT);
-        new ConditionalSleep(1000, 100) {
-            @Override
-            public boolean condition() throws InterruptedException {
-                return s.objects.closest("Portal") != null;
-            }
-        }.sleep();
+      	Script.sleep(Script.random(3000, 3500));
 	}
 }

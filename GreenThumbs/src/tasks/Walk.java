@@ -26,7 +26,7 @@ public class Walk implements Node {
 
 	@Override
 	public void run() throws InterruptedException {
-		//s.log("WALK OPERATION");
+		s.log("WALK OPERATION");
 		s.getWalking().webWalk(data.LogArea);
 		new ConditionalSleep(500, 1500) {
 			@Override

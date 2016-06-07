@@ -31,7 +31,7 @@ public class Bank implements Node {
 
 	@Override
 	public void run() throws InterruptedException {
-		//s.log("BANK OPERATION");
+		s.log("BANK OPERATION");
         s.getWalking().webWalk(data.BankArea);
 		new ConditionalSleep(1000, 500) {
 			@Override
