@@ -43,7 +43,7 @@ public class Bank implements Node {
     	if (bankBooth != null) {
 			if (s.getBank().isOpen()) {
 		      	s.getInventory().getItem(2970).interact("Deposit-All");
-                new ConditionalSleep(1000, 100) {
+                new ConditionalSleep(10000) {
                     @Override
                     public boolean condition() throws InterruptedException {
                         return !s.getInventory().isFull();
@@ -52,7 +52,7 @@ public class Bank implements Node {
 		      	data.mushroomCounter += 25;
 			} else {
 				bankBooth.interact("Bank");
-                new ConditionalSleep(1000, 100) {
+                new ConditionalSleep(10000) {
                     @Override
                     public boolean condition() throws InterruptedException {
                         return s.getBank().isOpen();
